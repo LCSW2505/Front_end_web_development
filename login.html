@@ -1,0 +1,59 @@
+<!--
+  Project 2
+   Charan Devaraju
+   c0943138
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stack's Stationary — Login / Register</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html"><div class="logo">SS</div><div><strong>Stack's Stationary</strong><div class="text-muted">Sign in or create an account</div></div></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart <span class="cart-count">0</span></a>
+      </nav>
+    </header>
+
+    <main class="grid">
+      <div class="card" style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:320px">
+          <h3>Login</h3>
+          <form id="login-form" class="card" aria-label="Login form">
+            <div class="form-row"><label>Email</label><input name="email" type="email" required /><div class="text-muted"></div></div>
+            <div class="form-row"><label>Password</label><input name="password" type="password" required /><div class="text-muted"></div></div>
+            <div class="form-row"><label><input type="checkbox" name="remember" /> Remember me</label></div>
+            <input type="hidden" name="csrf" value="" />
+            <button class="btn" type="submit">Sign in</button>
+          </form>
+        </div>
+
+        <div style="flex:1;min-width:320px">
+          <h3>Register</h3>
+          <form id="register-form" class="card" aria-label="Registration form">
+            <div class="form-row"><label>Username</label><input name="username" type="text" required /><div class="text-muted"></div></div>
+            <div class="form-row"><label>Email</label><input name="email" type="email" required /><div class="text-muted"></div></div>
+            <div class="form-row"><label>Password</label><input name="password" type="password" required /><div class="text-muted">Minimum 8 characters with upper, lower, number & symbol</div></div>
+            <div class="form-row"><label>Confirm password</label><input name="confirm" type="password" required /><div class="text-muted"></div></div>
+            <button class="btn" type="submit">Create account</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Security notes</h3>
+        <p class="text-muted">This demo showcases client-side hashing using SHA-256, CSRF token demo and input sanitization to prevent XSS. Server-side security is required in production.</p>
+      </div>
+    </main>
+  </div>
+
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

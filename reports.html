@@ -1,0 +1,125 @@
+<!--
+  Project 2
+   Charan Devaraju
+   c0943138
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stack's Stationary — Reports & Analytics</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html"><div class="logo">SS</div><div><strong>Stack's Stationary</strong><div class="text-muted">Reports & Analytics</div></div></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart <span class="cart-count">0</span></a>
+        <a href="profile.html">Profile</a>
+        <a class="active" href="reports.html">Reports</a>
+      </nav>
+    </header>
+
+    <main class="grid">
+      <div class="card">
+        <div class="breadcrumb">Reports / Analytics</div>
+        <h3>Sales Overview</h3>
+        <canvas id="barChart" height="120"></canvas>
+      </div>
+
+      <div class="card">
+        <h3>Category Share</h3>
+        <canvas id="pieChart" height="120"></canvas>
+      </div>
+
+      <div class="card">
+        <h3>Daily Sales (Last 30 Days)</h3>
+        <canvas id="lineChart" height="120"></canvas>
+      </div>
+    </main>
+  </div>
+
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async ()=>{
+  const products = await fetchProducts();
+  const salesData = JSON.parse(localStorage.getItem('stationery_sales') || '[]');
+
+  // Simulate some sales if no data
+  if(salesData.length === 0){
+    for(let i=0; i<50; i++){
+      const p = products[Math.floor(Math.random()*products.length)];
+      salesData.push({id:p.id, qty:Math.ceil(Math.random()*5), date: Date.now() - Math.floor(Math.random()*30)*86400000});
+    }
+  }
+
+  // Category totals
+  const catTotals = {};
+  salesData.forEach(s=>{
+    const prod = products.find(p=>p.id===s.id);
+    if(prod){
+      catTotals[prod.category] = (catTotals[prod.category]||0) + s.qty;
+    }
+  });
+
+  // Bar chart - category totals
+  new Chart(document.getElementById('barChart'), {
+    type: 'bar',
+    data: {
+      labels: Object.keys(catTotals),
+      datasets: [{
+        label: 'Units Sold',
+        data: Object.values(catTotals),
+        backgroundColor: '#2b6cb0'
+      }]
+    },
+    options: {responsive: true, plugins:{legend:{display:false}}}
+  });
+
+  // Pie chart - category share
+  new Chart(document.getElementById('pieChart'), {
+    type: 'pie',
+    data: {
+      labels: Object.keys(catTotals),
+      datasets: [{
+        label: 'Share',
+        data: Object.values(catTotals),
+        backgroundColor: ['#2b6cb0','#16a34a','#f59e0b','#ef4444','#6366f1','#d946ef']
+      }]
+    },
+    options: {responsive:true}
+  });
+
+  // Line chart - daily sales for last 30 days
+  const days = Array.from({length:30}, (_,i)=>{
+    const d = new Date(); d.setDate(d.getDate() - (29-i));
+    return d.toISOString().slice(0,10);
+  });
+  const dailyTotals = days.map(day=>{
+    return salesData.filter(s=> new Date(s.date).toISOString().slice(0,10) === day)
+      .reduce((sum,s)=>sum+s.qty,0);
+  });
+
+  new Chart(document.getElementById('lineChart'), {
+    type: 'line',
+    data: {
+      labels: days,
+      datasets: [{
+        label: 'Units Sold',
+        data: dailyTotals,
+        fill: false,
+        borderColor: '#2b6cb0',
+        tension: 0.1
+      }]
+    },
+    options: {responsive:true}
+  });
+});
+</script>
+</body>
+</html>

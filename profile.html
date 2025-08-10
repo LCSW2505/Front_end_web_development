@@ -1,0 +1,83 @@
+<!--
+  Project 2
+   Charan Devaraju
+   c0943138
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stack's Stationary — Profile</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html">
+        <div class="logo">SS</div>
+        <div>
+          <strong>Stack's Stationary</strong>
+          <div class="text-muted">Profile & Settings</div>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart <span class="cart-count">0</span></a>
+        <a class="active" href="profile.html">Profile</a>
+        <a href="reports.html">Reports</a>
+      </nav>
+    </header>
+
+    <main class="grid">
+      <div class="card">
+        <div class="breadcrumb">Profile / Settings</div>
+        <h3>Account</h3>
+        <form id="profile-form" class="card" aria-label="Profile form">
+          <div class="form-row">
+            <label>First Name</label>
+            <input name="firstname" type="text" required />
+          </div>
+          <div class="form-row">
+            <label>Last Name</label>
+            <input name="lastname" type="text" required />
+          </div>
+          <div class="form-row">
+            <label>Nickname</label>
+            <input name="nickname" type="text" />
+          </div>
+          <div class="form-row">
+            <label>Phone Number</label>
+            <input name="phone" type="tel" pattern="[0-9+\-\s()]*" />
+          </div>
+          <div class="form-row">
+            <label>Email</label>
+            <input name="email" type="email" required />
+          </div>
+          <div class="form-row">
+            <label>Date of Birth</label>
+            <input name="dob" type="date" />
+          </div>
+          <div class="form-row">
+            <label>Avatar upload</label>
+            <input id="avatar-input" name="avatar" type="file" accept="image/*" />
+          </div>
+          <img id="avatar-preview" src="assets/placeholder.png" alt="avatar preview" style="width:96px;height:96px;border-radius:8px;margin-bottom:8px" />
+          <button class="btn" type="submit">Save profile</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Preferences</h3>
+        <p class="text-muted">
+          Preferences like saved addresses and profile info are stored in your browser (localStorage) for demo purposes.
+        </p>
+      </div>
+    </main>
+  </div>
+
+<script src="js/app.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

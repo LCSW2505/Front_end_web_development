@@ -1,0 +1,225 @@
+/*Charan Devaraju
+  c0943138
+  Project 2
+*/
+:root{
+  --bg:#a8d0ff; 
+  --card: rgba(255, 255, 255, 0.85); 
+  --accent:#2b6cb0;
+  --muted:#6b7280;
+  --success:#16a34a;
+  --danger:#ef4444;
+  --radius:12px;
+  --maxw:1100px;
+  --gap:16px;
+  --shadow: 0 8px 24px rgba(43, 108, 176, 0.15);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size:16px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg, #a8d0ff 0%, #ffffff 100%);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  padding:24px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+.container{
+  width:100%;
+  max-width:var(--maxw);
+  background:transparent;
+}
+
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-weight:700;
+  box-shadow:var(--shadow);
+}
+.nav{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  padding:8px;
+  border-radius:8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.nav a.active, .nav a:hover {
+  background: rgba(43,108,176,0.15);
+  color: var(--accent);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:var(--gap);
+  align-items:start;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24px 24px 32px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  backdrop-filter: saturate(180%) blur(8px);
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+}
+.card:hover {
+  box-shadow: 0 12px 36px rgba(43, 108, 176, 0.25);
+  transform: translateY(-4px);
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:12px;
+}
+.product{
+  border-radius:12px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  position:relative;
+}
+.product img{
+  width:100%;
+  height:150px;
+  object-fit:contain;
+  border-radius:8px;
+  background:#fafafa;
+  border:1px solid #f1f5f9;
+}
+.p-title{font-weight:600}
+.p-price{font-weight:700;color:var(--accent)}
+.p-meta{font-size:13px;color:var(--muted)}
+
+.cart-btn{position:relative}
+.cart-count{
+  position:absolute;
+  top:-8px;
+  right:-8px;
+  background:var(--danger);
+  color:#fff;
+  border-radius:999px;
+  padding:4px 7px;
+  font-size:12px;
+}
+
+.form-row{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:10px;
+}
+label{
+  font-weight:600;
+  font-size:14px;
+}
+input[type="text"],input[type="email"],input[type="password"],input[type="date"],textarea,select{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #e6eef8;
+  background:#fbfdff;
+  font-size:14px;
+  transition: border-color 0.3s ease;
+}
+input:focus,textarea:focus,select:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow: 0 0 0 3px rgba(43,108,176,0.15);
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+  transition: background-color 0.3s ease;
+}
+.btn:hover{
+  background:#255a92;
+}
+.btn.ghost{
+  background:transparent;
+  color:var(--accent);
+  border:1px solid rgba(43,108,176,0.12);
+}
+.btn.warn{
+  background:var(--danger);
+}
+.btn.small{
+  padding:6px 8px;
+  font-size:14px;
+}
+
+@media (max-width:860px){
+  body{padding:12px}
+  .logo{width:40px;height:40px}
+  .products{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+}
+
+.text-muted{
+  color:var(--muted);
+  font-size:13px;
+}
+.flex{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.center{
+  text-align:center;
+}
+.drag-hint{
+  font-size:13px;
+  color:var(--muted);
+}
+
+a:focus,input:focus,button:focus{
+  box-shadow:0 0 0 3px rgba(59,130,246,0.12);
+  outline:none;
+}
+
+.breadcrumb{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:8px;
+}

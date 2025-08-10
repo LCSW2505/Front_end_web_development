@@ -1,0 +1,82 @@
+[
+  {
+    "id": "p001",
+    "title": "Classic Ballpoint Pen (Blue)",
+    "description": "Smooth-writing ballpoint pen with comfortable grip.",
+    "price": 1.99,
+    "category": "Pens",
+    "image": "/assets/pen.png"
+  },
+  {
+    "id": "p002",
+    "title": "Gel Ink Pen (0.5mm)",
+    "description": "Precision gel ink for neat notes and drawings.",
+    "price": 2.79,
+    "category": "Pens",
+    "image": "/assets/gelpen.png"
+  },
+  {
+    "id": "p003",
+    "title": "A4 Ruled Notebook 80pg",
+    "description": "Durable notebook for school or office.",
+    "price": 3.49,
+    "category": "Notebooks",
+    "image": "/assets/notebook.png"
+  },
+  {
+    "id": "p004",
+    "title": "Spiral Sketchbook A4",
+    "description": "Acid-free paper ideal for sketches and markers.",
+    "price": 6.99,
+    "category": "Notebooks",
+    "image": "/assets/sketch.png"
+  },
+  {
+    "id": "p005",
+    "title": "Highlighter Set (4 colors)",
+    "description": "Bright highlighters with chisel tip.",
+    "price": 4.49,
+    "category": "Markers",
+    "image": "/assets/highlighters.png"
+  },
+  {
+    "id": "p006",
+    "title": "Sticky Notes Pack (5x5)",
+    "description": "Colorful sticky notes for reminders.",
+    "price": 2.29,
+    "category": "Accessories",
+    "image": "/assets/sticky.png"
+  },
+  {
+    "id": "p007",
+    "title": "Stapler (mini) with staples",
+    "description": "Compact stapler for everyday use.",
+    "price": 5.99,
+    "category": "Tools",
+    "image": "/assets/stapler.png"
+  },
+  {
+    "id": "p008",
+    "title": "Correction Tape",
+    "description": "Clean correction tape for neat edits.",
+    "price": 3.19,
+    "category": "Accessories",
+    "image": "/assets/correction.png"
+  },
+  {
+    "id": "p009",
+    "title": "Mechanical Pencil (0.7mm)",
+    "description": "Refillable mechanical pencil with eraser.",
+    "price": 2.99,
+    "category": "Pencils",
+    "image": "/assets/pencil.png"
+  },
+  {
+    "id": "p010",
+    "title": "Plastic Ruler 30cm",
+    "description": "Transparent ruler with metric & imperial.",
+    "price": 1.49,
+    "category": "Tools",
+    "image": "/assets/ruler.png"
+  }
+]

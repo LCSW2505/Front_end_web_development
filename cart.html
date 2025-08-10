@@ -1,0 +1,87 @@
+<!--
+  Project 2
+   Charan Devaraju
+   c0943138
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stack's Stationary — Cart & Checkout</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html">
+        <div class="logo">SS</div>
+        <div>
+          <strong>Stack's Stationary</strong>
+          <div class="text-muted">Cart</div>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a class="active" href="cart.html">Cart <span class="cart-count">0</span></a>
+        <a href="profile.html">Profile</a>
+        <a href="reports.html">Reports</a>
+      </nav>
+    </header>
+
+    <main class="grid">
+      <div class="card">
+        <div class="breadcrumb">Cart / Checkout</div>
+        <h3>Your Cart</h3>
+        <div id="cart-items"></div>
+        <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+          <div>Total: <strong id="cart-total">$0.00</strong></div>
+          <div>
+            <button class="btn ghost" onclick="CART.export()">Export cart</button>
+            <button class="btn" onclick="CART.clear(); location.reload()">Clear cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Checkout</h3>
+        <form id="checkout-form" class="card" aria-label="Checkout form">
+          <div class="form-row">
+            <label>Full name</label>
+            <input name="name" type="text" required />
+          </div>
+          <div class="form-row">
+            <label>Email</label>
+            <input name="email" type="email" required />
+          </div>
+          <div class="form-row">
+            <label>Address</label>
+            <textarea name="address" rows="3" required></textarea>
+          </div>
+          <div class="form-row">
+            <label>Preferred delivery date</label>
+            <input name="delivery" type="date" />
+          </div>
+
+          <input type="hidden" name="csrf" value="" />
+
+          <button class="btn" type="submit">Place order</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      const csrfField = document.querySelector('[name="csrf"]');
+      if (csrfField) {
+        csrfField.value = "demo123"; 
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!--
+  Project 2
+   Charan Devaraju
+   c0943138
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stack's Stationary — Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html"><div class="logo">SS</div><div><strong>Stack's Stationary</strong><div class="text-muted">Your friendly stationary store</div></div></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart <span class="cart-count cart-count">0</span></a>
+        <a href="profile.html">Profile</a>
+        <a href="login.html">Login</a>
+        <a href="reports.html">Reports</a>
+      </nav>
+    </header>
+
+    <main class="grid">
+      <div class="card">
+        <div class="breadcrumb">Home / Dashboard</div>
+        <h2>Welcome to Stack's Stationary</h2>
+        <p class="text-muted">Hello Everyone, This is a My e-commerce website for your day to day Stationary needs, we are the best in the world</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
+          <a class="btn" href="products.html">Shop Products</a>
+          <a class="btn ghost" href="cart.html">View Cart</a>
+          <button class="btn" id="export-cart">Export Cart (JSON)</button>
+        </div>
+      </div>
+
+      <section class="card" style="display:flex;gap:12px;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3>Quick Stats</h3>
+          <div id="cart-dropzone" class="card" style="padding:8px">Drag items here to add to cart</div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="min-width:200px" class="card"><h4>Total products</h4><div id="stat-products" class="text-muted">—</div></div>
+          <div style="min-width:200px" class="card"><h4>Items in cart</h4><div id="stat-cart" class="text-muted">—</div></div>
+          <div style="min-width:200px" class="card"><h4>Categories</h4><div id="stat-cats" class="text-muted">—</div></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Daily Quote</h3>
+        <div id="quote" class="text-muted">Loading...</div>
+      </section>
+    </main>
+  </div>
+
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async ()=>{
+  const p = await fetchProducts();
+  document.getElementById('stat-products').textContent = p.length;
+  document.getElementById('stat-cart').textContent = CART.items.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('stat-cats').textContent = [...new Set(p.map(x=>x.category))].length;
+  document.getElementById('export-cart').addEventListener('click', ()=>{ CART.export(); });
+  fetch('https://api.quotable.io/random').then(r=>r.json()).then(j=> document.getElementById('quote').textContent = j.content + ' — ' + j.author).catch(()=>document.getElementById('quote').textContent = 'Stay creative today!');
+});
+</script>
+</body>
+</html>
